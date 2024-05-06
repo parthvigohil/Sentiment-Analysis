@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* styles for desktop devices */
+@media only screen and (min-width: 992px) {
+    body {
+      margin: auto;
+      min-height: 100vh;
+    }
+  }
+  
+  /* styles for tablet devices */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    body {
+      font-size: 14px;
+      width: 90%;
+      margin: auto;
+    }
+  }
+  
+  /* styles for mobile devices */
+@media only screen and (max-width: 767px) {
+    body {
+      font-size: 12px;
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+body{
+    min-height: 100vh;
+    overflow-x: hidden;
+    background:#fbf8ef
+}
+
+header{
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10000;
+}
+
+header .logo{
+    color: #000;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+header ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li{
+    list-style: none;
+    margin-left: 20px;
+}
+
+header ul li a{
+    text-decoration: none;
+    padding: 6px 15px;
+    color: #000;
+    border-radius: 20px;
+}
+
+header ul li a:hover{
+    background: #000;    
+    color: #fff;
+}
+
+section{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section::before
+{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, #000, transparent);
+    z-index: 1000;
+}
+
+section img
+{
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+
+section img#man
+{
+    float: right;
+    margin-left: 15%;
+    transform: scale(0.7);
+    z-index: 10;
+}
+
+section img#woman
+{
+    float: left;
+    margin-right: 15%;
+    transform: scale(0.7);
+    z-index:10;
+}
+
+#text
+{
+    right: -1000px;
+    position: absolute;
+    color: #000;
+    white-space: nowrap;
+    font-size: 5vw;
+    z-index: 9;
+}
+
+#btn
+{
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 70px;
+    border-radius: 40px;
+    background: #000;
+    color: #fbf8ef;
+    font-size: 1em;
+    z-index: 9;
+    transform: translateY(100px);
+
+}
+
+.sec{
+    position: relative;
+    padding: 100px;
+    background: #000; 
+    margin-top: 100px;
+}
+
+.sec h2{
+    font-size: 3em;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+#home{
+    color: #fbf8ef;
+    font: 4.5em;
+}
+
+.container{
+    margin-inline: 1.5rem;
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+
+.search{
+    position: relative;
+    width: 76px;
+    height: 70px;
+    background-color: #fbf8ef;
+    box-shadow: 0 4px 24px hsla(222, 68%, 12%, .1);
+    border-radius: 4rem;
+    padding: 10px;
+    overflow: hidden;
+    transition: width .5s cubic-bezier(.9, 0, .3, .9);
+}
+
+.search__input{
+    background-color: #fbf8ef;
+    border: none;
+    outline: none;
+    width: calc(100% -64px);
+    height: 100%;
+    border-radius: 4rem;
+    padding-left: 14px;
+    font-size: var(--small-font-size);
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.5s;
+}
+
+.search__input:-webkit-autofill
+{
+    box-shadow: 0 0 0 100px var(--white-color) inset;  
+}
+
+.search__button
+{
+    width: 56px;
+    height: 56px;
+    background-color: var(--dark-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 10px;
+    margin: auto;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: transform .5s cubic-bezier(.9, 0, .3, .9)
+}
+
+.search__icon,
+.search__close{
+
+    color: var(--white-color);
+    font-size: 1.5rem;
+    position: absolute;
+    transition: opacity .5s cubic-bezier(.9, 0, .3, .9);
+}
+
+.search__close{
+    opacity: 0;
+}
+
+.show-search
+{
+    width: 100%;
+}
+
+.show-search .search__input{
+    opacity: 1;
+    pointer-events: initial;
+}
+
+.show-search .search__button{
+    transform: rotate(90deg);
+}
+
+.show-search .search__icon{
+    opacity: 0;
+}
+
+.show-search .search__close{
+    opacity: 1;
+}
+
+@media screen and (min-width: 576px)
+{
+    .show-search{
+        width: 450px;    
+    }
+}
+
+.results
+{
+    color: #fbf8ef;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+.options{
+    align-items: center;
+    margin: 50px;
+}
+
+button{
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 70px;
+    border-radius: 40px;
+    background: #fbf8ef;
+    color: #000;
+    font-size: 1em;
+    justify-content: center;
+    position: relative;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid white;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #333;
+    color: white;
+}
+
+.emoji {
+    width: 1em; /* Set the width of the image relative to the font size */
+    height: auto; /* Maintain the aspect ratio */
+    vertical-align: middle; /* Align the image vertically with the text */
+    margin-left: 5px; /* Add some spacing between the image and the text */
+}
+
+textarea {
+    width: 100%;
+    min-height: 50px;
+    font-size: 16px;
+    padding: 10px;
+    box-sizing: border-box;
+    resize: vertical;
+    background-color: #fbf8ef; 
+    border: 1px solid #ccc; 
+    border-radius: 40px;
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 10px;
+}
