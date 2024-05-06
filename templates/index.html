@@ -1,0 +1,59 @@
+{% extends "base.html"%}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+    <section>
+        <img src="{{ url_for('static', filename='images/woman_phone.jpg') }}" id = "woman">
+        <h2 id="text">Twitter Sentiment Analysis</h2>
+        <a href = "#sec" id = "btn">Analyze Tweets</a>
+        <img src="{{ url_for('static', filename='images/man_phone.jpg') }}" id = "man">
+    </section>
+    <div class = "sec", id="sec">
+        <h2>Welcome to the Twitter Sentiment Analysis Tool</h2>
+        <p id = "home">
+            Whether you're here for a quick chuckle, a deep dive into trends, or just curious about what the Twitterverse is buzzing about, you've come to the right place! 🐦✨ 
+            Want to see what the world is saying about your latest hot take? Or maybe you're itching to get the pulse of your favorite celebrity's tweets? Well, guess what? 
+            You've got options! 
+            <br></br>
+            Type in your tweet, hit that analyze button, and let this tool do the rest. Or, if you're feeling a bit more investigative, plug in a username and let's unpack their Twitter trail. Happy analyzing! 🚀
+        </p>
+        <h2>Select Method of Analysis</h2>
+        <div class = "options">
+            <a href="{{ url_for('search') }}" >
+                <button>Type Tweet</button>
+            </a>
+            <a href = "{{ url_for('search_tweets') }}">
+                <button>Enter Username</button>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        let man = document.getElementById('man');
+        let woman = document.getElementById('woman');
+        let btn = document.getElementById('btn');
+        let text = document.getElementById('text');
+        let header = document.querySelector('header');
+
+        window.addEventListener('scroll', function()
+        {
+            let value = window.scrollY;
+            man.style.marginTop = value*0.5 + 'px';
+            woman.style.marginTop = value*0.5 + 'px';
+            text.style.marginRight = value*5+ 'px';
+            text.style.marginTop = value*1.5+ 'px';
+            btn.style.marginTop = value*1.5+ 'px';
+            header.style.top = value*0.5 + 'px';
+        })
+
+        const toggleSearch = (search, button) =>{
+            const searchBar = document.getElementById(search),
+            searchButton = document.getElementById(button)
+
+            searchButton.addEventListener('click', ()=>{
+                searchBar.classList.toggle('show-search')
+            })
+        }
+
+        toggleSearch('search-bar', 'search-button')
+    </script>
+{% endblock %}

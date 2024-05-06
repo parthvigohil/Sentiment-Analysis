@@ -1,0 +1,40 @@
+{% extends "base.html"%}
+{% block title %}Search Tweet{% endblock %}
+{% block content %}
+<div class = "sec", id="sec">
+    <h2>Type or Copy Tweet</h2>
+    <div class = "container">
+        <form action = "" method = "post">
+            <textarea name="input_text" placeholder="Type here..." oninput="autoResize(this)"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div class = "results">
+        {% if prediction %}
+        <p><strong>Prediction:</strong> {{ prediction }} {% if prediction == "Positive" %}
+        <img src="{{ url_for('static', filename='images/happy.png') }}" alt="Happy face" class="emoji">
+        {% elif prediction == "Negative" %}
+        <img src="{{ url_for('static', filename='images/sad.png') }}" alt="Sad face" class="emoji">
+        {% else %}
+        <img src="{{ url_for('static', filename='images/neutral.png') }}" alt="Neutral face" class="emoji">
+        {% endif %}
+        </p>
+        {% endif %} 
+    </div>
+</div>
+<script>
+        const toggleSearch = (search, button) =>{
+            const searchBar = document.getElementById(search),
+            searchButton = document.getElementById(button)
+
+            searchButton.addEventListener('click', ()=>{
+                searchBar.classList.toggle('show-search')
+            })
+        }
+
+        function autoResize(textarea) {
+            textarea.style.height = 'auto';
+            textarea.style.height = textarea.scrollHeight + 'px';
+        }
+</script>
+{% endblock %}

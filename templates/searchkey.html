@@ -1,0 +1,42 @@
+{% extends "base.html"%}
+{% block title %}Search Keyword{% endblock %}
+{% block content %}
+<div class = "sec", id="sec">
+    <h2>Type Keyword</h2>
+    <div class = "container">
+        <form action = "" class = "search" id = "search-bar" method = "post">
+            <input type = "search" name = "keyword" placeholder="Type here..." class="search__input">
+            <div class = "search__button" id="search-button">
+                <i class="ri-search-2-line search__icon"></i>
+                <i class="ri-close-line search__close"></i>
+            </div>
+        </form>
+    </div>
+    <div class = "results">
+        {% if display %}
+        <h3>Tweets and Sentiments:</h3>
+        <ul class = "item-list">
+            {% for tweet in display %}
+                <li>{{ tweet.text }} - Sentiment: {{ tweet.sentiment }}</li>
+            {% endfor %}
+        </ul>
+        <br></br>
+        <h3>Overall Sentiment Analysis:</h3>
+        <p>Number of Positive Tweets: {{ positive_count }}</p>
+        <p>Number of Negative Tweets: {{ negative_count }}</p>
+        <p>Number of Neutral Tweets: {{ neutral_count }}</p>
+        {% endif %}
+    </div>
+</div>
+<script>
+        const toggleSearch = (search, button) =>{
+            const searchBar = document.getElementById(search),
+            searchButton = document.getElementById(button)
+
+            searchButton.addEventListener('click', ()=>{
+                searchBar.classList.toggle('show-search')
+            })
+        }
+        toggleSearch('search-bar', 'search-button')
+</script>
+{% endblock %}
